@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func add(x, y int) int {
 	return x + y
@@ -19,16 +21,31 @@ func divide(x, y int) int {
 }
 
 func main() {
-	x := 40
-	y := 4
+	var operation string
+	var x, y int
 
-	sum := add(x, y)
-	difference := subtract(x, y)
-	mult := multiply(x, y)
-	div := divide(x, y)
+	fmt.Print("Enter the operation (+, -, *, /): ")
+	fmt.Scan(&operation)
+	fmt.Print("Enter the first number: ")
+	fmt.Scan(&x)
+	fmt.Print("Enter the second number: ")
+	fmt.Scan(&y)
 
-	fmt.Println("Sum:", sum)
-	fmt.Println("Difference:", difference)
-	fmt.Println("Product:", mult)
-	fmt.Println("Quotient:", div)
+	var result int
+
+	switch operation {
+	case "+":
+		result = add(x, y)
+	case "-":
+		result = subtract(x, y)
+	case "*":
+		result = multiply(x, y)
+	case "/":
+		result = divide(x, y)
+	default:
+		fmt.Println("Invalid operation")
+		return
+	}
+
+	fmt.Println("Result:", result)
 }
